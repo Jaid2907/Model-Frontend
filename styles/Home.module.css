@@ -1,6 +1,6 @@
 .header {
   /* background:; */
-  background: url('../public/wasteai-svg-5.svg'), #ECFFDC;
+  background: url('../public/wasteai-svg-5.svg'), #fae5d3;
   background-repeat: no-repeat;
   background-position: bottom;
   padding-top: 80px;
@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-.contact{
+.contact {
   background: #ECFFDC;
   min-height: 80vh;
   display: flex;

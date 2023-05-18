@@ -4,8 +4,8 @@
 :root {
   --primary: #f7c32e;
   /* --secondary: #00B895; */
-  --secondary: #00B76C;
-  --bg: #ECFFDC;
+  --secondary: #f7c32e;
+  --bg: white;
   --bg-drag: #8b152d;
   --bg-drag2: #6aba5e34;
 
@@ -201,7 +201,7 @@ h6 {
   transition: all 0.3s ease-in-out;
 }
 
-.image-preview{
+.image-preview {
   border: 3px dashed #777;
   border-radius: 20px;
   padding: 15px 30px;

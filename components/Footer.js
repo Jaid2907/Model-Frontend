@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const Footer = () => {
   let year = new Date().getFullYear();
@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 col-12">
               <p className="text-center text-muted">
-                Copyright &copy; {year}{" "}
+                Copyright &copy; {year}{' '}
                 <Link href="/" className="text-second text-decoration-none">
-                  WasteAI.co
+                  Recipe Lens
                 </Link>
                 . All Rights Reserved.
               </p>

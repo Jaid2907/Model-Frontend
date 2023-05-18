@@ -1,42 +1,43 @@
-import axios from "axios";
-import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import { BsFolder } from "react-icons/bs";
-import HashLoader from "react-spinners/HashLoader";
+import axios from 'axios';
+import Image from 'next/image';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { BsFolder } from 'react-icons/bs';
+import HashLoader from 'react-spinners/HashLoader';
 
 const baseStyle = {
   flex: 1,
-  width: "100%",
-  height: "30vh",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
+  width: '100%',
+  height: '30vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
   //   padding: "20px",
-  borderWidth: "5px",
-  borderRadius: "30px",
+  borderWidth: '5px',
+  borderRadius: '30px',
   //   borderColor: "#d2a52a8d",
-  borderColor: "#999",
-  borderStyle: "dashed",
+  borderColor: '#845ef7',
+  borderStyle: 'dashed',
   // backgroundColor: "#a2c1a593",
   // backgroundColor: "#cdf0d0",
-  backgroundColor: "#6aba5e1e",
-  color: "#000",
-  outline: "none",
-  transition: "border .24s ease-in-out",
+  backgroundColor: '#fdf2e9',
+  color: '#000',
+  outline: 'none',
+  transition: 'border .24s ease-in-out',
+  cursor: 'pointer',
 };
 
 const focusedStyle = {
-  borderColor: "#2196f3",
+  borderColor: '#2196f3',
 };
 
 const acceptStyle = {
-  borderColor: "#00B895",
+  borderColor: '#00B895',
 };
 
 const rejectStyle = {
-  borderColor: "#8b152d",
+  borderColor: '#8b152d',
 };
 
 const Drag = () => {
@@ -54,7 +55,7 @@ const Drag = () => {
     isDragAccept,
     isDragReject,
   } = useDropzone({
-    accept: { "image/*": [] },
+    accept: { 'image/*': [] },
     maxFiles: 1,
     onDrop: (acceptedFiles, fileRejectionItems) => {
       if (fileRejectionItems.length > 0) {
@@ -85,9 +86,10 @@ const Drag = () => {
   const handleUpload = async () => {
     setLoading(true);
     let formData = new FormData();
-    formData.append("image", file);
+    formData.append('image', file);
+    console.log(formData);
     const config = {
-      headers: { "content-type": "multipart/form-data" },
+      headers: { 'content-type': 'multipart/form-data' },
     };
     try {
       setFile(null);
@@ -111,16 +113,16 @@ const Drag = () => {
     }
     setLoading(false);
   };
-  
+
   return (
     <>
       <div className="col-md-6 col-sm-12 col-12 text-center">
         <div {...getRootProps({ style })}>
           <input {...getInputProps()} />
-          <div className={isDragActive ? "text-muted" : null}>
+          <div className={isDragActive ? 'text-muted' : null}>
             <div>
               <BsFolder
-                className={isDragActive ? "drop-icon text-muted" : "drop-icon"}
+                className={isDragActive ? 'drop-icon text-muted' : 'drop-icon'}
               />
               <p>
                 Upload or Drag and <br></br>drop your image
@@ -203,17 +205,34 @@ const Drag = () => {
               </div> */}
               <div className="col-md-6 col-sm-12 col-12 text-second text-center mt-2">
                 <p>
-                  Prediction:{" "}
+                  Prediction:{' '}
                   <span className="text-capitalize fw-bold">
                     {result.prediction}
                   </span>
                 </p>
                 <p>
-                  Confidence:{" "}
+                  Confidence:{' '}
                   <span className="fw-bold">{result.confidence}</span>
                 </p>
               </div>
             </div>
+            {
+              <div>
+                <Image
+                  src={`/assets/food/${result.prediction.toLowerCase()}.jpeg`}
+                  alt=""
+                  width={800}
+                  // height={200}
+                  height={800}
+                  className={`img-fluid m-2 ${style.teamImage}`}
+                  priority
+                />
+                {/* <img
+                  alt="image"
+                  src={require('C:wasteai-frontendcroissant.jpeg')}
+                /> */}
+              </div>
+            }
           </div>
         )}
       </div>
